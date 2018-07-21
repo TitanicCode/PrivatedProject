@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>菜单管理</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<link rel="stylesheet" href="../public/css/bootstrap.min.css">
+<link rel="stylesheet" href="../public/css/font-awesome.min.css">
+<link rel="stylesheet" href="../public/plugins/bootstrap-table/bootstrap-table.min.css">
+<link rel="stylesheet" href="../public/plugins/ztree/css/metroStyle/metroStyle.css">
+<link rel="stylesheet" href="../public/css/main.css">
+
+</head>
+<body>
+<!--v-cloak作用是不显示大括号-->
+<div id="app" v-cloak>
+
+   <!--列表-->
+   <div v-show="showList">
+
+      <!--CRUD工具栏按钮-->
+      <div id="CRUDButton">
+         <!--button class代表按钮的样式 span class代表按钮文字前面的小图形-->
+         <!--@click代表点击后引用的方法（js层）-->
+         <button type="button" class="btn btn-primary" @click="cre">
+            <span class="glyphicon glyphicon-plus"></span>
+            新增
+         </button>
+         <button type="button" class="btn btn-btn-info" @click="upd">
+            <span class="glyphicon glyphicon-pencil"></span>
+            修改
+         </button>
+         <!--注意引用方法不要用delete关键字，否则会出现页面不显示问题-->
+         <button type="button" class="btn btn-danger" @click="del">
+            <span class="glyphicon glyphicon-trash"></span>
+            删除
+         </button>
+      </div>
+      <table id="table"></table>
+   </div>
+
+   <!--表单-->
+   <div v-show="!showList" class="panel panel-default">
+
+      <div class="panel-heading">{{title}}</div>
+      <div class="panel-body">
+
+         <form class="form-horizontal">
+
+            <div class="form-group">
+               <div class="col-sm-2 control-label">类型</div>
+               <label class="radio-inline">
+                  <input type="radio" name="type" value="0" v-model="menu.type"/> 目录
+               </label>
+               <label class="radio-inline">
+                  <input type="radio" name="type" value="1" v-model="menu.type"/> 菜单
+               </label>
+               <label class="radio-inline">
+                  <input type="radio" name="type" value="2" v-model="menu.type"/> 按钮
+               </label>
+            </div>
+
+            <div class="form-group">
+               <div class="col-sm-2 control-label">菜单名称</div>
+               <div class="col-sm-10">
+                  <input type="text" class="form-control" v-model="menu.name" placeholder="菜单名称或按钮名称"/>
+               </div>
+            </div>
+
+            <div class="form-group">
+               <div class="col-sm-2 control-label">上级菜单</div>
+               <div class="col-sm-10">
+                  <input type="text" class="form-control" style="cursor:pointer;" v-model="menu.parentName" @click="menuTree" readonly="readonly" placeholder="一级菜单"/>
+               </div>
+            </div>
+
+
+            <div v-if="menu.type == 1" class="form-group">
+               <div class="col-sm-2 control-label">菜单URL</div>
+               <div class="col-sm-10">
+                  <input type="text" class="form-control" v-model="menu.url" placeholder="菜单URL"/>
+               </div>
+            </div>
+
+            <div v-if="menu.type == 1 || menu.type == 2" class="form-group">
+               <div class="col-sm-2 control-label">授权标识</div>
+               <div class="col-sm-10">
+                  <input type="text" class="form-control" v-model="menu.perms" placeholder="多个用逗号分隔，如：user:list,user:create"/>
+               </div>
+            </div>
+
+            <div v-if="menu.type != 2" class="form-group">
+               <div class="col-sm-2 control-label">排序号</div>
+               <div class="col-sm-10">
+                  <input type="number" class="form-control" v-model="menu.orderNum" placeholder="排序号"/>
+               </div>
+            </div>
+
+            <div v-if="menu.type != 2" class="form-group">
+               <div class="col-sm-2 control-label">图标</div>
+               <div class="col-sm-10">
+                  <input type="text" class="form-control" v-model="menu.icon" placeholder="菜单图标"/>
+                  <code style="margin-top:4px;display: block;">获取图标：http://fontawesome.io/icons/</code>
+               </div>
+            </div>
+
+            <div class="form-group">
+               <div class="col-sm-2 control-label"></div>
+               <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
+               &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+
+         </form>
+      </div>
+   </div>
+
+   <div id="menuLayer" style="display: none;">
+      <ul id="menuTree" class="ztree"></ul>
+   </div>
+
+</div>
+
+
+<!--jquery,bootstrap,bootstrap-table要依次引入，有先后顺序-->
+<script src="../public/libs/jquery.min.js"></script>
+<script src="../public/plugins/layer/layer.js"></script>
+<script src="../public/libs/bootstrap.min.js"></script>
+<script src="../public/libs/vue.min.js"></script>
+<script src="../public/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../public/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../public/plugins/ztree/jquery.ztree.all.min.js"></script>
+<script src="../public/js/common.js"></script>
+<script src="../public/js/sys/menu.js"></script>
+</body>
+</html>

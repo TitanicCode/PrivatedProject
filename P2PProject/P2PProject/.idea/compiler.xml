@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mapper" />
+        <module name="usercontroller" />
+        <module name="userpojo" />
+        <module name="userserviceimpl" />
+        <module name="userserviceinterface" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="mapper" target="1.8" />
+      <module name="P2PProject" target="1.8" />
+      <module name="usercontroller" target="1.8" />
+      <module name="userpojo" target="1.8" />
+      <module name="userserviceimpl" target="1.8" />
+      <module name="userserviceinterface" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

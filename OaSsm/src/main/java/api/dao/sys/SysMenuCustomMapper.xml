@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="api.dao.sys.SysMenuCustomMapper">
+
+    <!--*********************查询****************************-->
+    <!--SysMenu分页模糊全表查询-->
+    <select id="selectAllSysMenuCustom" resultType="api.dto.SysMenuCustomDto">
+        select
+        s.* ,
+        (select f.name from sys_menu f where f.id=s.parent_id ) AS parentName
+        from sys_menu s
+        <if test="search != null and search != ''">
+                WHERE s.name LIKE  '%${search}%'
+        </if>
+        <choose>
+            <when test="sort != null and order != null ">
+                ORDER BY CONVERT (${sort} USING gbk) ${order}
+            </when>
+            <otherwise>
+                order bY order_num asc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    <!--SysMenu去按钮查询-->
+    <select id="selectNoButtonCustomer" resultType="api.dto.SysMenuCustomDto">
+        SELECT * FROM sys_menu s WHERE s.type IN (0,1) ORDER BY order_num ASC
+    </select>
+    <!--SysMenu查询perms授权-->
+    <select id="selectPermsByUserId" resultType="string" parameterType="java.lang.Long">
+        SELECT perms
+
+        FROM sys_menu m
+
+        LEFT JOIN sys_role_menu rm
+        ON m.id = rm.menu_id
+
+        LEFT JOIN sys_user_role ur
+        ON rm.role_id = ur.role_id
+
+        WHERE ur.user_id = #{userId}
+    </select>
+    <!--SysMenu查询所有perms授权-->
+    <select id="selectAllPermsByUserId" resultType="string" parameterType="java.lang.Long">
+        SELECT perms
+
+        FROM sys_menu m
+    </select>
+    <!--SysMenu查询所有当前用户所有具备的菜单列表-->
+    <select id="selectNowUserMenuIdByUserId" resultType="long">
+        SELECT rm.menu_id
+
+        FROM sys_role_menu rm
+
+        LEFT JOIN sys_user_role ur
+        ON rm.role_id = ur.role_id
+
+        WHERE ur.user_id = #{userId}
+    </select>
+    <!--SysMenu查询所有n级菜单所有列表-->
+    <select id="selectMenuByParentId" resultType="api.dto.SysMenuCustomDto">
+        SELECT * FROM sys_menu
+        WHERE parent_id = #{parentId} ORDER BY order_num ASC
+    </select>
+
+    <!--*****************统计数据******************************-->
+    <select id="countBySelectAllSysMenuCustom" resultType="java.lang.Long">
+        select count(*) from sys_menu m
+        <if test="search != null and search != ''">
+            WHERE m.name LIKE '%${search}%'
+        </if>
+    </select>
+
+    <!--*********************删除************************-->
+    <!--根据id批量删除-->
+         <!--删除:collection中的list开头必须小写-->
+    <delete id="deleteBatchByIdSysMenu" parameterType="java.lang.Long">
+        DELETE FROM sys_menu WHERE id IN
+        <foreach collection="list" open="(" close=")" separator="," item="menuId">
+            #{menuId}
+        </foreach>
+        ;DELETE FROM sys_role_menu WHERE menu_id IN
+        <foreach collection="list" item="menuId" separator="," open="(" close=")">
+            #{menuId}
+        </foreach>
+    </delete>
+
+</mapper>

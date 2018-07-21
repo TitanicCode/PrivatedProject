@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="oa_ssm@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="oa_ssm">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="bookdb"/>
+    <schema id="4" parent="1" name="db_shopping"/>
+    <schema id="5" parent="1" name="hibernate"/>
+    <schema id="6" parent="1" name="hyzx"/>
+    <schema id="7" parent="1" name="information_schema"/>
+    <schema id="8" parent="1" name="mysql"/>
+    <schema id="9" parent="1" name="performance_schema"/>
+    <schema id="10" parent="1" name="qf"/>
+    <schema id="11" parent="1" name="test"/>
+    <table id="12" parent="2" name="sys_config">
+      <Comment>系统配置信息表</Comment>
+    </table>
+    <table id="13" parent="2" name="sys_log">
+      <Comment>系统日志</Comment>
+    </table>
+    <table id="14" parent="2" name="sys_menu">
+      <Comment>菜单管理</Comment>
+    </table>
+    <table id="15" parent="2" name="sys_role">
+      <Comment>角色</Comment>
+    </table>
+    <table id="16" parent="2" name="sys_role_menu">
+      <Comment>角色与菜单对应关系</Comment>
+    </table>
+    <table id="17" parent="2" name="sys_user">
+      <Comment>系统用户</Comment>
+    </table>
+    <table id="18" parent="2" name="sys_user_role">
+      <Comment>用户与角色对应关系</Comment>
+    </table>
+    <column id="19" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="20" parent="12" name="key">
+      <Position>2</Position>
+      <Comment>key</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="21" parent="12" name="value">
+      <Position>3</Position>
+      <Comment>value</Comment>
+      <DataType>varchar(2000)|0</DataType>
+    </column>
+    <column id="22" parent="12" name="status">
+      <Position>4</Position>
+      <Comment>状态   0：隐藏   1：显示</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="23" parent="12" name="remark">
+      <Position>5</Position>
+      <Comment>备注</Comment>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <index id="24" parent="12" name="key">
+      <ColNames>key</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="25" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="26" parent="12" name="key">
+      <ColNames>key</ColNames>
+      <UnderlyingIndexName>key</UnderlyingIndexName>
+    </key>
+    <column id="27" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="13" name="username">
+      <Position>2</Position>
+      <Comment>用户名</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="29" parent="13" name="operation">
+      <Position>3</Position>
+      <Comment>用户操作</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="30" parent="13" name="method">
+      <Position>4</Position>
+      <Comment>请求方法</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="31" parent="13" name="params">
+      <Position>5</Position>
+      <Comment>请求参数</Comment>
+      <DataType>varchar(5000)|0</DataType>
+    </column>
+    <column id="32" parent="13" name="ip">
+      <Position>6</Position>
+      <Comment>IP地址</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="33" parent="13" name="create_date">
+      <Position>7</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="34" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="35" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="36" parent="14" name="parent_id">
+      <Position>2</Position>
+      <Comment>父菜单ID，一级菜单为0</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="37" parent="14" name="name">
+      <Position>3</Position>
+      <Comment>菜单名称</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="38" parent="14" name="url">
+      <Position>4</Position>
+      <Comment>菜单URL</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="39" parent="14" name="perms">
+      <Position>5</Position>
+      <Comment>授权(多个用逗号分隔，如：user:list,user:create)</Comment>
+      <DataType>varchar(500)|0</DataType>
+    </column>
+    <column id="40" parent="14" name="type">
+      <Position>6</Position>
+      <Comment>类型   0：目录   1：菜单   2：按钮</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="41" parent="14" name="icon">
+      <Position>7</Position>
+      <Comment>菜单图标</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="42" parent="14" name="order_num">
+      <Position>8</Position>
+      <Comment>排序</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="43" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="44" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="45" parent="15" name="role_name">
+      <Position>2</Position>
+      <Comment>角色名称</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="46" parent="15" name="remark">
+      <Position>3</Position>
+      <Comment>备注</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="47" parent="15" name="create_user_id">
+      <Position>4</Position>
+      <Comment>创建者ID</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="48" parent="15" name="create_time">
+      <Position>5</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="49" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="50" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="51" parent="16" name="role_id">
+      <Position>2</Position>
+      <Comment>角色ID</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="52" parent="16" name="menu_id">
+      <Position>3</Position>
+      <Comment>菜单ID</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <key id="53" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="54" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="55" parent="17" name="username">
+      <Position>2</Position>
+      <Comment>用户名</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="17" name="password">
+      <Position>3</Position>
+      <Comment>密码</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="57" parent="17" name="email">
+      <Position>4</Position>
+      <Comment>邮箱</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="58" parent="17" name="mobile">
+      <Position>5</Position>
+      <Comment>手机号</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="59" parent="17" name="status">
+      <Position>6</Position>
+      <Comment>状态  0：禁用   1：正常</Comment>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="60" parent="17" name="create_user_id">
+      <Position>7</Position>
+      <Comment>创建者ID</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="61" parent="17" name="create_time">
+      <Position>8</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="62" parent="17" name="username">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="63" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="64" parent="17" name="username">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>username</UnderlyingIndexName>
+    </key>
+    <column id="65" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="66" parent="18" name="user_id">
+      <Position>2</Position>
+      <Comment>用户ID</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="67" parent="18" name="role_id">
+      <Position>3</Position>
+      <Comment>角色ID</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <key id="68" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
