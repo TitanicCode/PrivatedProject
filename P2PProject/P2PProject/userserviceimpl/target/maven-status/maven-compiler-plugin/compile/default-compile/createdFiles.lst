@@ -1,1 +1,3 @@
 com\shenrun\p2pproject\user\service\impl\UserServiceImpl.class
+com\shenrun\p2pproject\listener\MyContextListener.class
+com\shenrun\p2pproject\listener\InitUserTypeToRedisClass.class

@@ -258,14 +258,20 @@
         $(function () {
             $("#login").click(function (event) {
 
-                event.preventDefault();//结束当前事件所在对象的默认行为,比如提交表单或者跳转页面等等
+                //结束当前事件所在对象的默认行为,比如提交表单或者跳转页面等等,这样可以根据返回的数据进行指定页面的跳转。
+                event.preventDefault();
                 //发起异步请求
 
-                 $.get("http://localhost:8180/user/login.action?userName="+$("input[name='userName']").val()+"&password="+$("input[name='password']").val()+"",null,function (data) {
+                 $.get("http://localhost:8182/user/login.action?userName="+$("input[name='userName']").val()+"&password="+$("input[name='password']").val()+"",null,function (data) {
                     //alert(data)
                      console.log(data)
                      if(data.code==1){
-                         window.location.href="http://localhost:8180/"
+//                         if (!data.data.nickName||data.data.verified==0||payPassword==0){//如果用户的昵称啊,实名信息啊,支付密码等任意一项没有设置,则跳转到设置页面
+//                             window.location.href="http://localhost:8182/User/InitInfo.htm"
+//                             //js中 0是fasle 非0 都是 true , null是fasle undefind是fasle  ""是false     NAN是false(NAN是一个特殊的数字,意思是不是数字)
+//                             //js中有个自动类型转换  "123"+1=124
+//                         }
+                         window.location.href="http://localhost:8182/index.html"
                      }
                  })
                 //解析请求结果,跳转页面

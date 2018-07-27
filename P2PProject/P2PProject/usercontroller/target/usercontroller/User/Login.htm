@@ -105,7 +105,7 @@
                 <form method="post" action="/user/login.action" class="js-auto js-vsum" data-onsuccess="location.href=decodeuricomponent('%2fuser%2f');" data-onerror="loginerror()">
                     <div class="loginmeun-input">
                         <i class="iconfont">&#xe60c;</i>
-                        <input type="text" class="text" name="userName" placeholder="用户名/手机/邮箱" data-vtype="must" data-vmsg="请输入登陆名。" tabindex="1" />
+                        <input type="text" class="text" name="username" placeholder="用户名/手机/邮箱" data-vtype="must" data-vmsg="请输入登陆名。" tabindex="1" />
                     </div>
                     <div class="loginmeun-input">
                         <i class="iconfont">&#xe60e;</i>
@@ -261,7 +261,7 @@
                 event.preventDefault();//结束当前事件所在对象的默认行为,比如提交表单或者跳转页面等等
                 //发起异步请求
 
-                 $.get("http://localhost:8180/user/login.action?userName="+$("input[name='userName']").val()+"&password="+$("input[name='password']").val()+"",null,function (data) {
+                 $.get("http://localhost:8182/user/login.action?username="+$("input[name='username']").val()+"&password="+$("input[name='password']").val()+"",null,function (data) {
                     //alert(data)
                      console.log(data)
                      if(data.code==1){

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/P2PProject.iml" filepath="$PROJECT_DIR$/.idea/P2PProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P2PProject/mapper/mapper.iml" filepath="$PROJECT_DIR$/P2PProject/mapper/mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P2PProject/p2pproject.iml" filepath="$PROJECT_DIR$/P2PProject/p2pproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P2PProject/usercontroller/usercontroller.iml" filepath="$PROJECT_DIR$/P2PProject/usercontroller/usercontroller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P2PProject/userpojo/userpojo.iml" filepath="$PROJECT_DIR$/P2PProject/userpojo/userpojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P2PProject/userserviceimpl/userserviceimpl.iml" filepath="$PROJECT_DIR$/P2PProject/userserviceimpl/userserviceimpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P2PProject/userserviceinterface/userserviceinterface.iml" filepath="$PROJECT_DIR$/P2PProject/userserviceinterface/userserviceinterface.iml" />
+    </modules>
+  </component>
+</project>

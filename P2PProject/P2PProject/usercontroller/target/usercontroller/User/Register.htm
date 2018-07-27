@@ -118,25 +118,26 @@
 
                                 <div class="ui-radio js-tip">
                                     <span class="leftfont"><i class="fcred-3">*</i> 选择类型</span>
-                                    <label for="radio15312792566360"><input name="userTypeId" type="radio" value="1" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566360">我要投资</label><label for="radio15312792566361"><input name="userTypeId" type="radio" value="2" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566361">我要借款</label>
+                                    <label for="radio15312792566360"><input name="type" type="radio" value="1" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566360">我要投资</label><label for="radio15312792566361"><input name="type" type="radio" value="2" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566361">我要借款</label>
                                 </div>
 
                                 <div id="js-validform">
                                     <div class="input-big js-tip">
                                         <label class="leftfont"><i class="fcred-3">*</i> 手机号码</label>
-                                        <input type="text" class="text w218 js-vtarget" name="phoneNum" id="phone" placeholder="请输入您的手机号码" maxlength="11" data-vtype="phone|ajax" data-vmsg="请输入正确的手机号码。|此手机号码已经被使用。" data-vurl="?action=exists">
+                                        <!--data-vmsg="请输入正确的手机号码。|此手机号码已经被使用。" data-vurl="?action=exists"-->
+                                        <input type="text" class="text w218 js-vtarget" name="phoneNum" id="phone" placeholder="请输入您的手机号码" maxlength="11" data-vtype="phone|ajax" >
                                     </div>
                                     <div class="input-big js-tip" id="js-codeinput">
                                         <label class="leftfont"><i class="fcred-3">*</i> 验证码</label>
-                                        <input type="text" class="text w95" id="js-phonecode" name="vcode" maxlength="6" placeholder="请输入验证码" data-vtype="must|fun" data-vfun="validvcode" data-vmsg="请输入验证码|验证码错误">
-                                        <a href="javascript:void(0);" id="js-phonecodeimg" onclick="$('img',this).attr('src', 'http://localhost:8182/code/piccode.action?v=' + (new Date()).getTime())">
-                                            <img src="http://localhost:8182/code/piccode.action" width="180" height="50">
+                                        <input type="text" class="text w95" id="js-phonecode" name="piccode" maxlength="6" placeholder="请输入验证码" data-vtype="must|fun" data-vfun="validvcode" data-vmsg="请输入验证码|验证码错误">
+                                        <a href="javascript:void(0);" id="js-phonecodeimg" onclick="$('img',this).attr('src', 'http://localhost:8180/code/piccode.action?v=' + (new Date()).getTime())">
+                                            <img src="http://localhost:8180/code/piccode.action" width="180" height="50">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="input-big js-tip js-sendvcode" data-vcode-target="#phone" data-vcode-targetform="#js-validform">
                                     <label class="leftfont"><i class="fcred-3">*</i> 手机验证码</label>
-                                    <input type="text" id="validcode" name="validcode" class="text js-sendvcode-code" size="10" placeholder="请输入验证码" disabled="disabled" maxlength="6" data-vtype="length|fun" data-vfun="validphonecode" data-vmin="6" data-vmax="6" data-vmsg="请输入正确的验证码。|验证码不正确。">
+                                    <input type="text" id="validcode" name="phocode" class="text js-sendvcode-code" size="10" placeholder="请输入验证码" disabled="disabled" maxlength="6" data-vtype="length|fun" data-vfun="validphonecode" data-vmin="6" data-vmax="6" data-vmsg="请输入正确的验证码。|验证码不正确。">
                                     <input type="button" class="btn-nobordbig c-normal" id="js-phonecodebtn" onclick="getPhoneCode('validcode')" value="获取手机验证码">
                                 </div>
                                 <div class="input-big js-tip">
@@ -146,12 +147,12 @@
                                 </div>
                                 <div class="input-big js-tip">
                                     <label class="leftfont"><i class="fcred-3">*</i> 密码</label>
-                                    <input type="password" class="text w218" name="password" id="password1" maxlength="20" data-vtype="must|length" data-vmin="6" data-vmax="20" data-vmsg="请输入密码。|密码长度过短。">
+                                    <input type="password" class="text w218" name="password" id="password1" maxlength="20" data-vtype="must|length" data-vmin="6" data-vmax="20" data-vmsg="请输入六位密码。|密码长度过短。">
                                     <span class="prompt js-prompt">密码支持6~20位的字母、数字及下划线。</span>
                                 </div>
                                 <div class="input-big js-tip">
                                     <label class="leftfont"><i class="fcred-3">*</i> 确认密码</label>
-                                    <input type="password" name="confirmPassword" class="text w218" data-vtype="must|same" data-vref="password1" data-vmsg="请输入确认密码。|两次密码输入不一致。">
+                                    <input type="password" name="confirmpassword" class="text w218" data-vtype="must|same" data-vref="password1" data-vmsg="请输入确认密码。|两次密码输入不一致。">
                                     <span class="prompt js-prompt">请再次输入与登录密码。</span>
                                 </div>
                                 <div class="input-big js-tip">
@@ -182,7 +183,7 @@
 
                                 <div class="ui-radio js-tip">
                                     <span class="leftfont"><i class="fcred-3">*</i> 选择类型</span>
-                                    <label for="radio15312792566362"><input name="userTypeId" type="radio" value="1" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566362">我要投资</label><label for="radio15312792566363"><input name="userTypeId" type="radio" value="2" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566363">我要借款</label>
+                                    <label for="radio15312792566362"><input name="type" type="radio" value="1" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566362">我要投资</label><label for="radio15312792566363"><input name="type" type="radio" value="2" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566363">我要借款</label>
                                 </div>
 
                                 <div class="input-big js-tip">
@@ -191,17 +192,17 @@
                                 </div>
                                 <div class="input-big js-tip js-sendvcode" data-vcode-target="#email">
                                     <label class="leftfont"><i class="fcred-3">*</i> 验证码</label>
-                                    <input type="text" name="validcode" class="text js-sendvcode-code" size="10" placeholder="请输入验证码" disabled="disabled" maxlength="6" data-vtype="length|fun" data-vfun="validemailcode" data-vmin="6" data-vmax="6" data-vmsg="请输入正确的验证码。|验证码不正确。">
+                                    <input type="text" name="piccode" class="text js-sendvcode-code" size="10" placeholder="请输入验证码" disabled="disabled" maxlength="6" data-vtype="length|fun" data-vfun="validemailcode" data-vmin="6" data-vmax="6" data-vmsg="请输入正确的验证码。|验证码不正确。">
                                     <input type="button" class="btn-nobordbig c-normal js-sendvcode-btn" value="发送验证邮件">
                                 </div>
                                 <div class="input-big js-tip">
                                     <label class="leftfont"><i class="fcred-3">*</i> 用户名</label>
-                                    <input type="text" name="userName" class="text w218" placeholder="请输入您的用户名" maxlength="12" data-vtype="custom|length|ajax" data-vreg="^[a-za-z][a-za-z0-9_]+$" data-vurl="?action=exists" data-vmin="6" data-vmax="12" data-vmsg="必须以字母开头，支持字母,数字。|用户名必须在6-12位长度之间。|该用户名已存在。">
+                                    <input type="text" name="username" class="text w218" placeholder="请输入您的用户名" maxlength="12" data-vtype="custom|length|ajax" data-vreg="^[a-za-z][a-za-z0-9_]+$" data-vurl="?action=exists" data-vmin="6" data-vmax="12" data-vmsg="必须以字母开头，支持字母,数字。|用户名必须在6-12位长度之间。|该用户名已存在。">
                                     <span class="prompt js-prompt">用户名必须以字母开头，支持6~12位的字母、数字及下划线。</span>
                                 </div>
                                 <div class="input-big js-tip">
                                     <label class="leftfont"><i class="fcred-3">*</i> 密码</label>
-                                    <input type="password" class="text w218" name="password" id="password2" maxlength="50" data-vtype="must|length" data-vmin="6" data-vmax="50" data-vmsg="请输入密码。|密码长度过短。">
+                                    <input type="password" class="text w218" name="password" id="password2" maxlength="50" data-vtype="must|length" data-vmin="6" data-vmax="50" data-vmsg="请输入六位密码。|密码长度过短。">
                                     <span class="prompt js-prompt">密码支持6~20位的字母、数字及下划线。</span>
                                 </div>
                                 <div class="input-big js-tip">
@@ -347,7 +348,7 @@
        var phonenum= $("#phone").val();
         //发起网络请求
         $.ajax({
-            url:"http://localhost:8182/code/phonenum.action?phonenum="+phonenum,
+            url:"http://localhost:8180/code/phonenum.action?phonenum="+phonenum,
             type:"POST",
             dataType:"jsonp",
             success:function (data) {

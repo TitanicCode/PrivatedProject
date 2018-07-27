@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+
     <artifactId>userserviceinterface</artifactId>
 
     <dependencies>
@@ -31,5 +32,6 @@
         </dependency>
 
     </dependencies>
+
 
 </project>

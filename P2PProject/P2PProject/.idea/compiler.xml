@@ -15,6 +15,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="mapper" target="1.8" />
+      <module name="p2pproject" target="1.8" />
       <module name="P2PProject" target="1.8" />
       <module name="usercontroller" target="1.8" />
       <module name="userpojo" target="1.8" />

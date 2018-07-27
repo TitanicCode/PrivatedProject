@@ -15,4 +15,6 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="com.shenrun.p2pproject.user.service"/>
+    <bean class="com.shenrun.p2pproject.listener.InitUserTypeToRedisClass" init-method="InitUserType"></bean>
+
 </beans>

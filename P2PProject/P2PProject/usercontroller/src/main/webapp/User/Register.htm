@@ -82,8 +82,8 @@
 
 
                         <li class="head-fixednav">
-                            <a href="/user/login.htm"><i class="iconfont fs18"></i> 登 录</a>
-                            <a href="/user/register.htm" class="blue ml5"><i class="iconfont fs18"></i> 注 册</a>
+                            <a href="/User/Login.htm"><i class="iconfont fs18"></i> 登 录</a>
+                            <a href="/User/Register.htm" class="blue ml5"><i class="iconfont fs18"></i> 注 册</a>
                         </li>
                     </ul>
                 </div>
@@ -99,7 +99,7 @@
                         <dt><a href="#js-form-email">通过邮箱注册</a></dt>
                         <dd>
                             <strong class="g-block fs18">已有千锋教育教学贷账号？</strong>
-                            <a href="login.htm" class="g-block btn-nobord c-important w164 mt10">登 录</a>
+                            <a href="Login.htm" class="g-block btn-nobord c-important w164 mt10">登 录</a>
                             <div class="userreg-loginoauth">
                                 <span>您还可通过以下方式登录:</span>
 
@@ -118,19 +118,20 @@
 
                                 <div class="ui-radio js-tip">
                                     <span class="leftfont"><i class="fcred-3">*</i> 选择类型</span>
-                                    <label for="radio15312792566360"><input name="usertypeid" type="radio" value="1" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566360">我要投资</label><label for="radio15312792566361"><input name="usertypeid" type="radio" value="2" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566361">我要借款</label>
+                                    <label for="radio15312792566360"><input name="type" type="radio" value="1" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566360">我要投资</label><label for="radio15312792566361"><input name="type" type="radio" value="2" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566361">我要借款</label>
                                 </div>
 
                                 <div id="js-validform">
                                     <div class="input-big js-tip">
                                         <label class="leftfont"><i class="fcred-3">*</i> 手机号码</label>
-                                        <input type="text" class="text w218 js-vtarget" name="phonenum" id="phone" placeholder="请输入您的手机号码" maxlength="11" data-vtype="phone|ajax" data-vmsg="请输入正确的手机号码。|此手机号码已经被使用。" data-vurl="?action=exists">
+                                        <!--data-vmsg="请输入正确的手机号码。|此手机号码已经被使用。" data-vurl="?action=exists"-->
+                                        <input type="text" class="text w218 js-vtarget" name="phoneNum" id="phone" placeholder="请输入您的手机号码" maxlength="11" data-vtype="phone|ajax" >
                                     </div>
                                     <div class="input-big js-tip" id="js-codeinput">
                                         <label class="leftfont"><i class="fcred-3">*</i> 验证码</label>
                                         <input type="text" class="text w95" id="js-phonecode" name="piccode" maxlength="6" placeholder="请输入验证码" data-vtype="must|fun" data-vfun="validvcode" data-vmsg="请输入验证码|验证码错误">
-                                        <a href="javascript:void(0);" id="js-phonecodeimg" onclick="$('img',this).attr('src', 'http://localhost:8182/code/piccode.action?v=' + (new Date()).getTime())">
-                                            <img src="http://localhost:8182/code/piccode.action" width="180" height="50">
+                                        <a href="javascript:void(0);" id="js-phonecodeimg" onclick="$('img',this).attr('src', 'http://localhost:8180/code/piccode.action?v=' + (new Date()).getTime())">
+                                            <img src="http://localhost:8180/code/piccode.action" width="180" height="50">
                                         </a>
                                     </div>
                                 </div>
@@ -141,7 +142,7 @@
                                 </div>
                                 <div class="input-big js-tip">
                                     <label class="leftfont"><i class="fcred-3">*</i> 用户名</label>
-                                    <input type="text" name="username" class="text w218" placeholder="请输入您的用户名" maxlength="12" data-vtype="custom|length|ajax" data-vreg="^[a-za-z][a-za-z0-9_]+$" data-vurl="?action=exists" data-vmin="6" data-vmax="12" data-vmsg="必须以字母开头，支持字母,数字。|用户名必须在6-12位长度之间。|该用户名已存在。">
+                                    <input type="text" name="userName" class="text w218" placeholder="请输入您的用户名" maxlength="12" data-vtype="custom|length|ajax" data-vreg="^[a-za-z][a-za-z0-9_]+$" data-vurl="?action=exists" data-vmin="6" data-vmax="12" data-vmsg="必须以字母开头，支持字母,数字。|用户名必须在6-12位长度之间。|该用户名已存在。">
                                     <span class="prompt js-prompt">用户名必须以字母开头，支持6~12位的字母、数字及下划线。</span>
                                 </div>
                                 <div class="input-big js-tip">
@@ -156,14 +157,14 @@
                                 </div>
                                 <div class="input-big js-tip">
                                     <label class="leftfont">推荐人</label>
-                                    <input type="text" class="text w218" placeholder="请输入您收的推荐号" name="referercode" value="">
+                                    <input type="text" class="text w218" placeholder="请输入您收的推荐号" name="refererCode" value="">
                                     <span class="prompt js-prompt">如果没有收到推荐号可不填写。</span>
                                 </div>
                                 <div class="ui-vcheckbox mt25 js-tip mlgm1">
                                     <label class="on" for="checkbox15312792566350">
                                         <input type="checkbox" name="protocol1" checked="checked" value="1" data-vtype="group" data-vmin="1" data-vmsg="您需要同意用户协议。" id="checkbox15312792566350">同意《<a target="_blank" href="/agreement/?type=userreg">千锋教育教学贷用户协议</a>》</label>
                                 </div>
-                                <input type="hidden" name="type" value="phone">
+                                <input type="hidden" name="type11" value="phone">
                                 <div class="btn-submits mt10 mlg1">
                                     <input type="submit" class="btn-bbord c-normal wg3" value="提交注册" data-success-text="注册成功">
                                     <div class="wg3"><em class="m-sumtip js-vsum"></em></div>
@@ -182,7 +183,7 @@
 
                                 <div class="ui-radio js-tip">
                                     <span class="leftfont"><i class="fcred-3">*</i> 选择类型</span>
-                                    <label for="radio15312792566362"><input name="usertypeid" type="radio" value="1" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566362">我要投资</label><label for="radio15312792566363"><input name="usertypeid" type="radio" value="2" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566363">我要借款</label>
+                                    <label for="radio15312792566362"><input name="type" type="radio" value="1" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566362">我要投资</label><label for="radio15312792566363"><input name="type" type="radio" value="2" data-vtype="group" data-vmin="1" data-vmsg="请选择会员类型。" id="radio15312792566363">我要借款</label>
                                 </div>
 
                                 <div class="input-big js-tip">
@@ -347,7 +348,7 @@
        var phonenum= $("#phone").val();
         //发起网络请求
         $.ajax({
-            url:"http://localhost:8182/code/phonenum.action?phonenum="+phonenum,
+            url:"http://localhost:8180/code/phonenum.action?phonenum="+phonenum,
             type:"POST",
             dataType:"jsonp",
             success:function (data) {

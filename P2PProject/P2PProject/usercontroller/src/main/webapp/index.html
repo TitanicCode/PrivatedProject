@@ -621,7 +621,7 @@
 
     $(function () {
         ///获取登录用户的信息
-        $.get("http://localhost:8180/user/getUserInfo.action",null,function (data) {
+        $.get("http://localhost:8182/user/getUserInfo.action",null,function (data) {
 
             console.log(data);
 
@@ -629,7 +629,7 @@
                    $("#login_regist1").hide()
                    $("#login_regist2").hide()
                    $("#userinfo").show()
-                   $("#userinfo").append(data.data.userName)
+                   $("#userinfo").append("欢迎您，"+data.data.userName)
                }
 
         });

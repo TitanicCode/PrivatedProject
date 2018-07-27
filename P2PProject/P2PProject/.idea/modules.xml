@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/P2PProject.iml" filepath="$PROJECT_DIR$/P2PProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/mapper/mapper.iml" filepath="$PROJECT_DIR$/mapper/mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2pproject.iml" filepath="$PROJECT_DIR$/p2pproject.iml" />
       <module fileurl="file://$PROJECT_DIR$/usercontroller/usercontroller.iml" filepath="$PROJECT_DIR$/usercontroller/usercontroller.iml" />
       <module fileurl="file://C:\Users\Administrator.PC-20180226XFFD\Desktop\TitanicGit\PrivateProject\P2PProject\P2PProject\usercontroller.iml" filepath="C:\Users\Administrator.PC-20180226XFFD\Desktop\TitanicGit\PrivateProject\P2PProject\P2PProject\usercontroller.iml" />
       <module fileurl="file://$PROJECT_DIR$/userpojo/userpojo.iml" filepath="$PROJECT_DIR$/userpojo/userpojo.iml" />

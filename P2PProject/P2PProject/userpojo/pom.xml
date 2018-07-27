@@ -11,6 +11,16 @@
 
     <artifactId>userpojo</artifactId>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>com.common</groupId>
+            <artifactId>annotation</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
     <build>
         <plugins>
             <!-- 要将源码放上去，需要加入这个插件 -->

@@ -1,5 +1,7 @@
 package com.shenrun.p2pproject.user.pojo;
 
+import com.common.annotation.SkipRedis;
+
 import java.io.Serializable;
 
 /**
@@ -10,14 +12,21 @@ public class UserPojo implements Serializable {
     private String userId;
     private String userName;
     private String phoneNum;
+    @SkipRedis
     private String password;
     private String refererCode;
     private String myRefererCode;
     private String userTypeId;
     private String creditLevelId;
     private String creditLevelName;
-    private Short userStatus;
+    private String userStatus;
     private String email;
+    private String userTypeName;
+    //TODO 还没有加入数据库表中
+    private String payPassword;
+    private String nickName;
+    private String verified;
+
 
     public String getUserId() {
         return userId;
@@ -91,11 +100,11 @@ public class UserPojo implements Serializable {
         this.creditLevelName = creditLevelName;
     }
 
-    public Short getUserStatus() {
+    public String  getUserStatus() {
         return userStatus;
     }
 
-    public void setUserStatus(Short userStatus) {
+    public void setUserStatus(String userStatus) {
         this.userStatus = userStatus;
     }
 
@@ -107,6 +116,42 @@ public class UserPojo implements Serializable {
         this.email = email;
     }
 
+    public String getPayPassword() {
+        return payPassword;
+    }
+
+    public void setPayPassword(String payPassword) {
+        this.payPassword = payPassword;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNiceName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getVerified() {
+        return verified;
+    }
+
+    public void setVerified(String verified) {
+        this.verified = verified;
+    }
+
+    public String getUserTypeName() {
+        return userTypeName;
+    }
+
+    public void setUserTypeName(String userTypeName) {
+        this.userTypeName = userTypeName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
     @Override
     public String toString() {
         return "UserPojo{" +
@@ -116,11 +161,15 @@ public class UserPojo implements Serializable {
                 ", password='" + password + '\'' +
                 ", refererCode='" + refererCode + '\'' +
                 ", myRefererCode='" + myRefererCode + '\'' +
-                ", usertyId='" + userTypeId + '\'' +
+                ", userTypeId='" + userTypeId + '\'' +
                 ", creditLevelId='" + creditLevelId + '\'' +
                 ", creditLevelName='" + creditLevelName + '\'' +
-                ", userStatus=" + userStatus +
+                ", userStatus='" + userStatus + '\'' +
                 ", email='" + email + '\'' +
+                ", userTypeName='" + userTypeName + '\'' +
+                ", payPassword='" + payPassword + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", verified='" + verified + '\'' +
                 '}';
     }
 }
