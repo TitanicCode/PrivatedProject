@@ -22,4 +22,5 @@ public interface UserService {
     ResultData checkRegister(UserPojo userPojo,String userTypeId,String value,String phoCode,String picCode,String confirmPassword);
     void insertUser(UserPojo userPojo,String userTypeId)throws Exception;
     ResultData findUserByUserNameAndPasswordAndUserStatus(String userName,String password);
+    int updateUser(UserPojo user);
 }

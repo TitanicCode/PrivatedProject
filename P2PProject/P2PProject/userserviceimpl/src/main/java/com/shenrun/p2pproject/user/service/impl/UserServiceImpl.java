@@ -4,6 +4,8 @@ import com.common.constantcode.ConstantCodeUtil;
 import com.common.dto.ResultData;
 import com.common.redis.client.JedisClient;
 import com.common.redis.client.JedisInterface;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shenrun.p2pproject.user.mapper.UserMapper;
 import com.shenrun.p2pproject.user.pojo.UserPojo;
 import com.shenrun.p2pproject.user.service.UserService;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.Cookie;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -114,11 +118,17 @@ public class UserServiceImpl implements UserService {
         userPojo.setMyRefererCode(myCode.toString());
 
 
-        //可以进行程序预热,在项目启动的时候将一些几乎不变的内容或者是经常使用的内容先查询出来放入redis中
-        //这里的type和typeUserId就可以使用程序预热
-        String typeUserId = userMapper.selectUserTypeId(Integer.parseInt(type));
-        userPojo.setUserTypeId(typeUserId);
+//        //可以进行程序预热,在项目启动的时候将一些几乎不变的内容或者是经常使用的内容先查询出来放入redis中
+//        //这里的type和typeUserId就可以使用程序预热
+//        String typeUserId = userMapper.selectUserTypeId(Integer.parseInt(type));
+//        userPojo.setUserTypeId(typeUserId);
+        //通过程序预热，在缓存中设置user的type属性
+        String userTypeId = type == "1" ? userMapper.selectUserTypeId(1) : userMapper.selectUserTypeId(2);
+        String userTypeName = jedisClient.hGet(userTypeId, "userTypeName", jedis);
+        userPojo.setUserTypeId(userTypeId);
+        userPojo.setUserTypeName(userTypeName);
         System.out.println(userPojo.toString());
+
 
         //usercreditlevelid,usercreditlevelname,userstatus没有执行插入，这是管理员操作字段，数据库已经设置默认值
         userMapper.insertUser(userPojo);
@@ -142,5 +152,10 @@ public class UserServiceImpl implements UserService {
         //TODO
         System.out.println(userPojo.toString());
         return ResultData.setOk(userPojo);
+    }
+
+    @Override
+    public int updateUser(UserPojo user) {
+        return userMapper.updateUser(user);
     }
 }

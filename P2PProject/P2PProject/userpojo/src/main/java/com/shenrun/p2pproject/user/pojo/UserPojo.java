@@ -22,11 +22,13 @@ public class UserPojo implements Serializable {
     private String userStatus;
     private String email;
     private String userTypeName;
-    //TODO 还没有加入数据库表中
-    private String payPassword;
     private String nickName;
-    private String verified;
-
+    private String realName;
+    private String idNum;
+    private Integer emailStatus;
+    private Integer realNameVerifiedStatus;
+    private Integer sceneVerifiedStatus;
+    private String payPassword;
 
     public String getUserId() {
         return userId;
@@ -100,7 +102,7 @@ public class UserPojo implements Serializable {
         this.creditLevelName = creditLevelName;
     }
 
-    public String  getUserStatus() {
+    public String getUserStatus() {
         return userStatus;
     }
 
@@ -116,30 +118,6 @@ public class UserPojo implements Serializable {
         this.email = email;
     }
 
-    public String getPayPassword() {
-        return payPassword;
-    }
-
-    public void setPayPassword(String payPassword) {
-        this.payPassword = payPassword;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNiceName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    public String getVerified() {
-        return verified;
-    }
-
-    public void setVerified(String verified) {
-        this.verified = verified;
-    }
-
     public String getUserTypeName() {
         return userTypeName;
     }
@@ -148,8 +126,60 @@ public class UserPojo implements Serializable {
         this.userTypeName = userTypeName;
     }
 
+    public String getNickName() {
+        return nickName;
+    }
+
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getIdNum() {
+        return idNum;
+    }
+
+    public void setIdNum(String idNum) {
+        this.idNum = idNum;
+    }
+
+    public Integer getEmailStatus() {
+        return emailStatus;
+    }
+
+    public void setEmailStatus(Integer emailStatus) {
+        this.emailStatus = emailStatus;
+    }
+
+    public Integer getRealNameVerifiedStatus() {
+        return realNameVerifiedStatus;
+    }
+
+    public void setRealNameVerifiedStatus(Integer realNameVerifiedStatus) {
+        this.realNameVerifiedStatus = realNameVerifiedStatus;
+    }
+
+    public Integer getSceneVerifiedStatus() {
+        return sceneVerifiedStatus;
+    }
+
+    public void setSceneVerifiedStatus(Integer sceneVerifiedStatus) {
+        this.sceneVerifiedStatus = sceneVerifiedStatus;
+    }
+
+    public String getPayPassword() {
+        return payPassword;
+    }
+
+    public void setPayPassword(String payPassword) {
+        this.payPassword = payPassword;
     }
 
     @Override
@@ -167,9 +197,13 @@ public class UserPojo implements Serializable {
                 ", userStatus='" + userStatus + '\'' +
                 ", email='" + email + '\'' +
                 ", userTypeName='" + userTypeName + '\'' +
-                ", payPassword='" + payPassword + '\'' +
                 ", nickName='" + nickName + '\'' +
-                ", verified='" + verified + '\'' +
+                ", realName='" + realName + '\'' +
+                ", idNum='" + idNum + '\'' +
+                ", emailStatus=" + emailStatus +
+                ", realNameVerifiedStatus=" + realNameVerifiedStatus +
+                ", sceneVerifiedStatus=" + sceneVerifiedStatus +
+                ", payPassword='" + payPassword + '\'' +
                 '}';
     }
 }

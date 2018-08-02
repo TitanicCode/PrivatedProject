@@ -13,8 +13,8 @@
         <selectKey resultType="java.lang.String" keyColumn="userid" keyProperty="userId" order="BEFORE">
             SELECT uuid();
         </selectKey>
-        INSERT user_account  (userid,username,phonenum,password,referercode,myreferercode,usertypeid,email)
-        VALUES (#{userId},#{userName},#{phoneNum},#{password},#{refererCode},#{myRefererCode},#{userTypeId},#{email})
+        INSERT user_account  (userid,username,phonenum,password,referercode,myreferercode,usertypeid,email,usertypename)
+        VALUES (#{userId},#{userName},#{phoneNum},#{password},#{refererCode},#{myRefererCode},#{userTypeId},#{email},#{userTypeName})
     </insert>
 
     <select id="selectUserTypeId" parameterType="int" resultType="String">
@@ -31,4 +31,61 @@
         SELECT usertypeid,usertypename,type FROM usertype;
     </select>
 
+    <update id="updateUser" parameterType="com.shenrun.p2pproject.user.pojo.UserPojo">
+        UPDATE user_account
+        <set>
+            <!--注意数据校验-->
+            <if test="userName !=null  and userName !=''">
+                username=#{userName},
+            </if>
+            <if test="phoneNum !=null  and phoneNum !=''">
+                phonenum=#{phoneNum},
+            </if>
+            <if test="password !=null  and password !=''">
+                password=#{password},
+            </if>
+            <if test="refererCode !=null  and refererCode !=''">
+                referercode=#{refererCode},
+            </if>
+            <if test="userTypeId !=null  and userTypeId !=''">
+                usertypeid=#{userTypeId},
+            </if>
+            <if test="creditLevelId !=null  and creditLevelId !=''">
+                usercreditlevelid=#{creditLevelId},
+            </if>
+            <if test="creditLevelName !=null  and creditLevelName !=''">
+                usercreditlevelname=#{creditLevelName},
+            </if>
+            <if test="userStatus !=null  and userStatus !=''">
+                userstatus=#{userStatus},
+            </if>
+            <if test="email !=null  and email !=''">
+                email=#{email},
+            </if>
+            <if test="nickName !=null  and nickName !=''">
+                nickname=#{nickName},
+            </if>
+            <if test="realName !=null  and realName !=''">
+                realname=#{realName},
+            </if>
+            <if test="idNum !=null  and idNum !=''">
+                idnum=#{idNum},
+            </if>
+            <if test="emailStatus !=null  and emailStatus !=''">
+                emailstatus=#{emailStatus},
+            </if>
+            <if test="realNameVerifiedStatus !=null  and realNameVerifiedStatus !=''">
+                realnameverifiedstatus=#{realNameVerifiedStatus},
+            </if>
+            <if test="sceneVerifiedStatus !=null  and sceneVerifiedStatus !=''">
+                sceneverifiedstatus=#{sceneVerifiedStatus},
+            </if>
+            <if test="payPassword !=null  and payPassword !=''">
+                paypassword=#{payPassword},
+            </if>
+
+        </set>
+
+        WHERE userid =#{userId}
+    </update>
 </mapper>

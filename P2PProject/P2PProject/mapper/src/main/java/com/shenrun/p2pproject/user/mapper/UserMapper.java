@@ -21,4 +21,7 @@ public interface UserMapper {
 
     //数据预热查询userType,这个数据是通过预热以及缓存同步机制放到redis中的,不会出现单独查询某个的情况,所以此处没有条件
     List<UserType> selectAllUserType();
+
+    //更新用户信息
+    int updateUser(UserPojo user);
 }

@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="usercontroller:war">
-    <output-path>$PROJECT_DIR$/P2PProject/usercontroller/target</output-path>
-    <root id="archive" name="usercontroller.war">
-      <element id="artifact" artifact-name="usercontroller:war exploded" />
-    </root>
-  </artifact>
-</component>

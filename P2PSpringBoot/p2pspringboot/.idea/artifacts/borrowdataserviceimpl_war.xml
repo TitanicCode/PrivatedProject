@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="borrowdataserviceimpl:war">
+    <output-path>$PROJECT_DIR$/borrowdataserviceimpl/target</output-path>
+    <root id="archive" name="borrowdataserviceimpl-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="borrowdataserviceimpl:war exploded" />
+    </root>
+  </artifact>
+</component>

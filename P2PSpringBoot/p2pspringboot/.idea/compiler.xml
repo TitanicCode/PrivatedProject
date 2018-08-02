@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="borrowdatacontroller" />
+        <module name="borrowdatainterface" />
+        <module name="borrowdatapojo" />
+        <module name="borrowdataserviceimpl" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="borrowdatacontroller" target="1.8" />
+      <module name="borrowdatainterface" target="1.8" />
+      <module name="borrowdatapojo" target="1.8" />
+      <module name="borrowdataserviceimpl" target="1.8" />
+      <module name="p2pspringboot" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
